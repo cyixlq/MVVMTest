@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="top.cyixlq.test.R"/>
+        <import type="top.cyixlq.test.MainViewModel"/>
+        <import type="top.cyixlq.test.ViewInverseMethodsKt"/>
+
+        <variable
+            name="viewModel"
+            type="MainViewModel"/>
+
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="top.cyixlq.test.MainViewModel" />-->
+
+        <variable
+            name="observeViewModel"
+            type="top.cyixlq.test.ObserveViewModel"/>
+
+        <variable
+            name="text"
+            type="String" />
+
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".MainActivity">
+
+            <include layout="@layout/layout_titlt_bar"
+                title="@{text}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.name}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(viewModel.age)}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.isMan ? @string/man : @string/woman}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.convertSex()}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{v -> viewModel.log()}"
+                android:text="点我"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{v -> viewModel.oneYearLater()}"
+                android:text="一年后"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.text}"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.text}"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{observeViewModel.firstName}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{observeViewModel.lastName}"/>
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年龄"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="改姓"
+                android:onClick="@{v -> observeViewModel.changeLastName()}"/>
+
+            <Button
+                android:id="@+id/btn_add_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加一岁"/>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                imgUrl="@{viewModel.imgUrl}"
+                app:bgRes="@{R.mipmap.ic_launcher}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{System.currentTimeMillis()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(viewModel.num)}"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={ViewInverseMethodsKt.numToSex(viewModel.num)}"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

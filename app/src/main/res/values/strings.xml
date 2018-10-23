@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+</resources>
