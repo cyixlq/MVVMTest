@@ -12,20 +12,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        actionBar?.hide()
+        supportActionBar?.hide()
         // java代码
         // ActionBar actionBar = getActionBar();
         // if (actionBar != null) actionBar.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        // 第一种将数据填充到xml文件中的方法，我们直接实例化了一个MainViewModel赋值给BR资源中一个叫viewModel的变量
+        // 第一种将数据填充到xml文件中的方法(代码在下面这行)，我们直接实例化了一个MainViewModel赋值给BR资源中一个叫viewModel的变量
+        // binding.setVariable(BR.viewModel, MainViewModel())
+        // 以下是一些说明：
         // BR就是前文提到的DataBinding资源，像R文件一样自动生成，记录所有xml中data标签内的变量名称，有点像控件id的感觉
         // viewModel来自布局文件中data标签内的variable标签中的name
-        // binding.setVariable(BR.viewModel, MainViewModel())
-        // 第二种将数据填充到xml文件中的方法,viewModel这个变量名视你在xml中variable标签中的name而定
+
+        // 第二种将数据填充到xml文件中的方法(代码在下面这行),viewModel这个变量名视你在xml中variable标签中的name而定
+        binding.viewModel = MainViewModel()
         // 假如你的name为user,并且class名称也为User的话(name和class的名称不一定要相同)
         // 那么代码就是binding.user = User()
-        binding.viewModel = MainViewModel()
-        binding.text = "测试"
+
         // java 代码如下
         // binding.setViewModel(new MainViewModel())
         // binding.setUser(new User())
