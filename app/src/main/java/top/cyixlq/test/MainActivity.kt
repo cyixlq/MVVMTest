@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         // java代码
-        // ActionBar actionBar = getActionBar();
+        // ActionBar actionBar = getSupportActionBar();
         // if (actionBar != null) actionBar.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         // 第一种将数据填充到xml文件中的方法(代码在下面这行)，我们直接实例化了一个MainViewModel赋值给BR资源中一个叫viewModel的变量
