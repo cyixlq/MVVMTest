@@ -1,10 +1,12 @@
 package top.cyixlq.test
 
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.Observable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import top.cyixlq.test.databinding.ActivityMainBinding
+import top.cyixlq.test.viewmodel.ViewModelActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddAge.setOnClickListener {
             val lastAge = observeViewModel.age.get()
             observeViewModel.age.set(lastAge + 1)
+        }
+        binding.btnGoViewModel.setOnClickListener{
+            startActivity(Intent(this, ViewModelActivity::class.java))
         }
         // 监听ObserveViewModel中值的变化并进行回调处理
         observeViewModel.age.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {

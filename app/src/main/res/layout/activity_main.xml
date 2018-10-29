@@ -134,6 +134,12 @@
                 android:layout_height="wrap_content"
                 android:text="@={ViewInverseMethodsKt.numToSex(viewModel.num)}"/>
 
+            <Button
+                android:id="@+id/btn_go_view_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="前往ViewModel例程"/>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </layout>
